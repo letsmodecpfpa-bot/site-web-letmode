@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Let's Mode — École de Mode</title>
+
+<style>
+/* =====================================================
+   VARIABLES
+===================================================== */
+:root{
+    --orange:#f47b20;
+    --orange-light:#ff9b45;
+    --black:#090909;
+    --white:#ffffff;
+    --cream:#f7f3ed;
+    --gray:#777;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--cream);
+    color:var(--black);
+    overflow-x:hidden;
+}
+
+button{
+    font-family:inherit;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+header{
+    position:fixed;
+    top:20px;
+    left:4%;
+    right:4%;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:8px 18px;
+
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:18px;
+
+    z-index:1000;
+
+    transition:.4s;
+}
+
+header.scrolled{
+    top:8px;
+    background:rgba(5,5,5,.95);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+/*
+    REMPLACE simplement cette partie par :
+
+    <img src="logo.png" alt="Let's Mode">
+
+    lorsque tu auras ton logo.
+*/
+
+.logo{
+    width:130px;
+    height:50px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-weight:bold;
+    font-size:18px;
+    letter-spacing:2px;
+}
+
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+nav{
+    display:flex;
+    gap:5px;
+}
+
+nav button{
+    border:none;
+    background:transparent;
+    color:white;
+
+    padding:12px 14px;
+
+    cursor:pointer;
+
+    text-transform:uppercase;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1px;
+
+    border-radius:10px;
+
+    transition:.3s;
+}
+
+nav button:hover,
+nav button.active{
+    color:var(--orange-light);
+    background:rgba(255,255,255,.08);
+}
+
+
+/* MENU MOBILE */
+
+.menu{
+    display:none;
+
+    background:none;
+    border:none;
+
+    color:white;
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    padding:130px 7% 80px;
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(0,0,0,.92),
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.25)
+    ),
+
+    url("https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=2000&q=90")
+    center/cover;
+}
+
+.hero-content{
+    max-width:850px;
+    position:relative;
+    z-index:2;
+}
+
+.small-title{
+    color:var(--orange-light);
+
+    text-transform:uppercase;
+
+    letter-spacing:5px;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+
+    font-family:Georgia, serif;
+
+    font-size:clamp(70px,12vw,160px);
+
+    line-height:.8;
+
+    letter-spacing:-7px;
+}
+
+.hero h1 span{
+    color:var(--orange);
+}
+
+.hero p{
+
+    max-width:620px;
+
+    color:#ddd;
+
+    line-height:1.8;
+
+    margin:35px 0;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    border:1px solid var(--orange);
+
+    padding:16px 25px;
+
+    cursor:pointer;
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.btn-orange{
+    background:var(--orange);
+    color:white;
+}
+
+.btn-orange:hover{
+    background:white;
+    color:black;
+    transform:translateY(-4px);
+}
+
+.btn-transparent{
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+.btn-transparent:hover{
+    background:white;
+    color:black;
+    transform:translateY(-4px);
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+section{
+    padding:110px 7%;
+    scroll-margin-top:100px;
+}
+
+.section-title{
+    max-width:800px;
+    margin-bottom:55px;
+}
+
+.section-title small{
+
+    color:var(--orange);
+
+    text-transform:uppercase;
+
+    letter-spacing:4px;
+
+    font-size:10px;
+
+    font-weight:bold;
+}
+
+.section-title h2{
+
+    font-family:Georgia, serif;
+
+    font-size:clamp(48px,7vw,90px);
+
+    line-height:.9;
+
+    margin-top:15px;
+}
+
+.section-title p{
+
+    color:var(--gray);
+
+    line-height:1.8;
+
+    max-width:650px;
+
+    margin-top:20px;
+}
+
+
+/* =====================================================
+   NOTRE UNIVERS
+===================================================== */
+
+.univers{
+    background:var(--cream);
+}
+
+.univers-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:15px;
+}
+
+.univers-card{
+
+    height:430px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#111;
+}
+
+.univers-card img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s;
+}
+
+.univers-card:hover img{
+    transform:scale(1.08);
+}
+
+.univers-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,.9)
+    );
+}
+
+.card-text{
+
+    position:absolute;
+
+    left:25px;
+    bottom:25px;
+
+    color:white;
+
+    z-index:2;
+}
+
+.card-text span{
+
+    color:var(--orange);
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+.card-text h3{
+
+    font-family:Georgia,serif;
+
+    font-size:30px;
+
+    margin-top:6px;
+}
+
+
+/* =====================================================
+   FORMATIONS
+===================================================== */
+
+.formations{
+    background:white;
+}
+
+.formation{
+
+    border-top:1px solid #ddd;
+
+    padding:30px 10px;
+
+    display:grid;
+
+    grid-template-columns:70px 1fr auto;
+
+    align-items:center;
+
+    gap:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.formation:last-child{
+    border-bottom:1px solid #ddd;
+}
+
+.formation:hover{
+
+    background:#080808;
+
+    color:white;
+
+    padding-left:25px;
+}
+
+.formation-number{
+
+    color:var(--orange);
+
+    font-weight:bold;
+}
+
+.formation h3{
+
+    font-family:Georgia,serif;
+
+    font-size:30px;
+}
+
+.duration{
+
+    color:var(--orange);
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+
+/* DETAILS */
+
+.details{
+
+    display:none;
+
+    padding:35px;
+
+    background:#090909;
+
+    color:white;
+
+    animation:slideDown .4s ease;
+}
+
+.details.open{
+    display:block;
+}
+
+.details-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:50px;
+}
+
+.details h4{
+
+    color:var(--orange);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:10px;
+
+    margin-bottom:12px;
+}
+
+.details p,
+.details li{
+
+    color:#ccc;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.details ul{
+    padding-left:18px;
+}
+
+
+/* =====================================================
+   CREATIONS
+===================================================== */
+
+.creations{
+
+    background:#080808;
+
+    color:white;
+}
+
+.creations .section-title p{
+    color:#999;
+}
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:
+    1.1fr .8fr 1.1fr;
+
+    gap:10px;
+}
+
+.gallery-item{
+
+    height:430px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:#151515;
+}
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(5){
+
+    height:530px;
+}
+
+.gallery-item img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s;
+}
+
+.gallery-item:hover img{
+
+    transform:scale(1.07);
+
+    filter:brightness(.65);
+}
+
+.gallery-item span{
+
+    position:absolute;
+
+    left:20px;
+    bottom:20px;
+
+    color:white;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+}
+
+
+/* =====================================================
+   LA VIE À LET'S MODE
+===================================================== */
+
+.vie{
+    background:var(--cream);
+}
+
+.vie-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1.3fr 1fr;
+
+    gap:15px;
+}
+
+.vie-image{
+
+    height:600px;
+
+    overflow:hidden;
+}
+
+.vie-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.7s;
+}
+
+.vie-image:hover img{
+    transform:scale(1.05);
+}
+
+.vie-text{
+
+    background:white;
+
+    padding:60px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.vie-text h3{
+
+    font-family:Georgia,serif;
+
+    font-size:55px;
+
+    line-height:.95;
+
+    margin-bottom:25px;
+}
+
+.vie-text p{
+
+    color:#666;
+
+    line-height:1.8;
+}
+
+.vie-list{
+    margin-top:30px;
+}
+
+.vie-list div{
+
+    padding:16px 0;
+
+    border-bottom:1px solid #ddd;
+
+    font-weight:bold;
+
+    font-size:13px;
+}
+
+.vie-list b{
+
+    color:var(--orange);
+
+    margin-right:10px;
+}
+
+
+/* =====================================================
+   STATISTIQUES
+===================================================== */
+
+.stats{
+
+    background:var(--orange);
+
+    color:white;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    text-align:center;
+
+    padding:80px 7%;
+}
+
+.stat strong{
+
+    font-size:60px;
+
+    display:block;
+}
+
+.stat span{
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+
+/* =====================================================
+   ADMISSION
+===================================================== */
+
+.admission{
+    background:white;
+}
+
+.admission-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+}
+
+.admission h2{
+
+    font-family:Georgia,serif;
+
+    font-size:70px;
+
+    line-height:.9;
+
+    margin:15px 0 25px;
+}
+
+.admission p{
+
+    color:#666;
+
+    line-height:1.8;
+
+    max-width:580px;
+
+    margin-bottom:30px;
+}
+
+.info-box{
+
+    background:#090909;
+
+    color:white;
+
+    padding:35px;
+}
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #292929;
+
+    font-size:12px;
+}
+
+.info-row strong{
+    color:var(--orange);
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact{
+
+    background:#080808;
+
+    color:white;
+
+    text-align:center;
+}
+
+.contact h2{
+
+    font-family:Georgia,serif;
+
+    font-size:clamp(60px,10vw,125px);
+
+    line-height:.85;
+
+    margin:25px 0;
+}
+
+.contact p{
+    color:#999;
+    margin-bottom:30px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:#050505;
+
+    color:#777;
+
+    padding:30px 7%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:10px;
+}
+
+footer strong{
+    color:white;
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+@keyframes slideDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:900px){
+
+    nav{
+
+        position:fixed;
+
+        top:0;
+        right:-100%;
+
+        width:80%;
+        height:100vh;
+
+        background:#080808;
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        padding:30px;
+
+        transition:.4s;
+    }
+
+    nav.open{
+        right:0;
+    }
+
+    nav button{
+
+        font-size:14px;
+
+        padding:18px;
+    }
+
+    .menu{
+        display:block;
+        position:relative;
+        z-index:1001;
+    }
+
+    .univers-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .vie-grid,
+    .admission-grid{
+        grid-template-columns:1fr;
+    }
+
+    .details-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media(max-width:600px){
+
+    section{
+        padding:80px 5%;
+    }
+
+    .hero{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .hero h1{
+        font-size:75px;
+    }
+
+    .univers-grid,
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .univers-card{
+        height:370px;
+    }
+
+    .gallery-item,
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(5){
+        height:430px;
+    }
+
+    .formation{
+
+        grid-template-columns:
+        45px 1fr;
+
+        gap:10px;
+    }
+
+    .duration{
+        grid-column:2;
+    }
+
+    .vie-image{
+        height:400px;
+    }
+
+    .vie-text{
+        padding:35px 25px;
+    }
+
+    .vie-text h3{
+        font-size:45px;
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+    }
+
+    .admission h2{
+        font-size:55px;
+    }
+
+    .info-row{
+        flex-direction:column;
+        gap:7px;
+    }
+
+    footer{
+
+        flex-direction:column;
+
+        gap:12px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header id="header">
+
+    <!--
+    ==================================================
+    LOGO
+
+    POUR METTRE TON LOGO :
+
+    Supprime "LET'S MODE"
+
+    et mets :
+
+  
+    Ton image logo doit être dans le même dossier
+    que ce fichier HTML.
+    ==================================================
+    -->
+
+    <div class="logo">
+        
+    </div>
+  <img src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/logo.png.png">
+
+
+    <nav id="nav">
+
+        <button class="active"
+                onclick="allerA('accueil')">
+            Accueil
+        </button>
+
+        <button onclick="allerA('univers')">
+            Notre univers
+        </button>
+
+        <button onclick="allerA('formations')">
+            Formations
+        </button>
+
+        <button onclick="allerA('creations')">
+            Créations
+        </button>
+
+        <button onclick="allerA('vie')">
+            La vie
+        </button>
+
+        <button onclick="allerA('admission')">
+            Admission
+        </button>
+
+        <button onclick="allerA('contact')">
+            Contact
+        </button>
+
+    </nav>
+
+
+    <button class="menu"
+            onclick="ouvrirMenu()">
+
+        ☰
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     ACCUEIL
+===================================================== -->
+
+<section class="hero" id="accueil">
+
+    <div class="hero-content reveal">
+
+        <div class="small-title">
+            École de mode & création
+        </div>
+
+
+        <h1>
+            LET'S<br>
+            <span>MODE</span>
+        </h1>
+
+
+        <p>
+
+            Formez-vous aux métiers de la mode,
+            développez votre créativité et transformez
+            votre passion en véritable savoir-faire.
+
+        </p>
+
+
+        <div class="buttons">
+
+            <button class="btn btn-orange"
+                    onclick="allerA('formations')">
+
+                Découvrir les formations
+
+            </button>
+
+
+            <button class="btn btn-transparent"
+                    onclick="allerA('univers')">
+
+                Notre univers
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     NOTRE UNIVERS
+===================================================== -->
+
+<section class="univers"
+         id="univers">
+
+    <div class="section-title reveal">
+
+        <small>
+            01 — Notre univers
+        </small>
+
+        <h2>
+            La mode.<br>
+            Notre passion.
+        </h2>
+
+        <p>
+
+            Un espace dédié à la création,
+            à l'apprentissage et à l'expression
+            de chaque talent.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="univers-grid">
+
+
+        <article class="univers-card reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/univers1.jpg.png">
+
+            <div class="card-text">
+
+                <span>01</span>
+
+                <h3>
+                    
+                </h3>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="univers-card reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/univers2.pg.jpg">
+
+            <div class="card-text">
+
+                <span>02</span>
+
+                <h3>
+                
+                </h3>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="univers-card reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/univers3.jpg.png">
+
+            <div class="card-text">
+
+                <span>03</span>
+
+                <h3>
+                    
+                </h3>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="univers-card reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/univers4.jpg.png">
+
+            <div class="card-text">
+
+                <span>04</span>
+
+                <h3>
+                    
+                </h3>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FORMATIONS
+===================================================== -->
+
+<section class="formations"
+         id="formations">
+
+
+    <div class="section-title reveal">
+
+        <small>
+            02 — Nos formations
+        </small>
+
+        <h2>
+            Formez-vous<br>
+            aux métiers de la mode.
+        </h2>
+
+        <p>
+
+            Cliquez sur une filière pour découvrir
+            sa description et ses débouchés.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- STYLISME -->
+
+    <div class="formation reveal"
+         onclick="afficherDetails('stylisme')">
+
+        <span class="formation-number">
+            01
+        </span>
+
+        <h3>
+            Stylisme
+        </h3>
+
+        <span class="duration">
+            1 AN
+        </span>
+
+    </div>
+
+
+    <div class="details"
+         id="stylisme">
+
+        <div class="details-grid">
+
+            <div>
+
+                <h4>
+                    Description
+                </h4>
+
+                <p>
+
+                    Le stylisme consiste à imaginer
+                    et concevoir des collections de
+                    vêtements en tenant compte des
+                    tendances, des matières et des
+                    besoins du marché.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Débouchés
+                </h4>
+
+                <ul>
+
+                    <li>
+                        Styliste-modéliste indépendant
+                    </li>
+
+                    <li>
+                        Créateur de mode
+                    </li>
+
+                    <li>
+                        Responsable de production textile
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MANNEQUINAT -->
+
+    <div class="formation reveal"
+         onclick="afficherDetails('mannequinat')">
+
+        <span class="formation-number">
+            02
+        </span>
+
+        <h3>
+            Mannequinat
+        </h3>
+
+        <span class="duration">
+            1 AN
+        </span>
+
+    </div>
+
+
+    <div class="details"
+         id="mannequinat">
+
+        <div class="details-grid">
+
+            <div>
+
+                <h4>
+                    Description
+                </h4>
+
+                <p>
+
+                    Le mannequinat forme aux techniques
+                    de défilé, de pose photo et de
+                    représentation de marques ou
+                    de créateurs.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Débouchés
+                </h4>
+
+                <ul>
+
+                    <li>
+                        Mannequin défilé ou photo
+                    </li>
+
+                    <li>
+                        Égérie de marque
+                    </li>
+
+                    <li>
+                        Animateur de campagnes publicitaires
+                    </li>
+
+                    <li>
+                        Coach en posture et expression corporelle
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MODELISME -->
+
+    <div class="formation reveal"
+         onclick="afficherDetails('modelisme')">
+
+        <span class="formation-number">
+            03
+        </span>
+
+        <h3>
+            Modélisme
+        </h3>
+
+        <span class="duration">
+            1 AN
+        </span>
+
+    </div>
+
+
+    <div class="details"
+         id="modelisme">
+
+        <div class="details-grid">
+
+            <div>
+
+                <h4>
+                    Description
+                </h4>
+
+                <p>
+
+                    Le modéliste réalise les patrons,
+                    ajuste les coupes et veille à la
+                    faisabilité technique des créations
+                    du styliste.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Débouchés
+                </h4>
+
+                <ul>
+
+                    <li>
+                        Modéliste-patronnier
+                    </li>
+
+                    <li>
+                        Responsable d'atelier de confection
+                    </li>
+
+                    <li>
+                        Couturier spécialisé
+                    </li>
+
+                    <li>
+                        Prototypiste en mode
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DESIGN -->
+
+    <div class="formation reveal"
+         onclick="afficherDetails('design')">
+
+        <span class="formation-number">
+            04
+        </span>
+
+        <h3>
+            Design & Création
+        </h3>
+
+        <span class="duration">
+            1 AN
+        </span>
+
+    </div>
+
+
+    <div class="details"
+         id="design">
+
+        <div class="details-grid">
+
+            <div>
+
+                <h4>
+                    Description
+                </h4>
+
+                <p>
+
+                    Cette formation concerne la conception
+                    d'accessoires de mode : bijoux, sacs,
+                    chaussures, ceintures, etc.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Débouchés
+                </h4>
+
+                <ul>
+
+                    <li>
+                        Designer d'accessoires de mode
+                    </li>
+
+                    <li>
+                        Artisan-créateur
+                    </li>
+
+                    <li>
+                        Responsable d'atelier de fabrication
+                    </li>
+
+                    <li>
+                        Entrepreneur dans l'accessoire de mode
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- STYLISME MODELISME -->
+
+    <div class="formation reveal"
+         onclick="afficherDetails('stylismemodelisme')">
+
+        <span class="formation-number">
+            05
+        </span>
+
+        <h3>
+            Stylisme – Modélisme
+        </h3>
+
+        <span class="duration">
+            2 ANS
+        </span>
+
+    </div>
+
+
+    <div class="details"
+         id="stylismemodelisme">
+
+        <div class="details-grid">
+
+            <div>
+
+                <h4>
+                    Description
+                </h4>
+
+                <p>
+
+                    Cette formation permet de concevoir
+                    des collections tout en maîtrisant
+                    leur réalisation technique et la
+                    fabrication des vêtements.
+
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Débouchés
+                </h4>
+
+                <ul>
+
+                    <li>
+                        Styliste-modéliste
+                    </li>
+
+                    <li>
+                        Responsable de production
+                    </li>
+
+                    <li>
+                        Chef d'atelier
+                    </li>
+
+                    <li>
+                        Entrepreneur en mode et prêt-à-porter
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CREATIONS
+===================================================== -->
+
+<section class="creations"
+         id="creations">
+
+
+    <div class="section-title reveal">
+
+        <small>
+            03 — Nos créations
+        </small>
+
+        <h2>
+            Votre galerie.
+        </h2>
+
+        <p>
+
+            C'est ici que tu vas mettre les créations
+            réalisées par les étudiants.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="gallery">
+
+
+        <!--
+        =================================================
+        REMPLACE LES IMAGES PAR TES PHOTOS
+
+        Exemple :
+
+        <img src="creation1.jpg">
+
+        =================================================
+        -->
+
+
+        <div class="gallery-item reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/creation1.jpg.jpg">
+
+            <span>
+                Création 01
+            </span>
+
+        </div>
+
+
+
+        <div class="gallery-item reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/creation2.jpg.jpg">
+
+            <span>
+                Création 02
+            </span>
+
+        </div>
+
+
+
+        <div class="gallery-item reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/creation3.jpg.jpg">
+
+            <span>
+                Création 03
+            </span>
+
+        </div>
+
+
+
+        <div class="gallery-item reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/creation4.jpg.jpg">
+
+            <span>
+                Création 04
+            </span>
+
+        </div>
+
+
+
+        <div class="gallery-item reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/creation5.jpg.jpg">
+
+            <span>
+                Création 05
+            </span>
+
+        </div>
+
+
+
+        <div class="gallery-item reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/creation6.jpg.jpg">
+
+            <span>
+                Création 06
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LA VIE À LET'S MODE
+===================================================== -->
+
+<section class="vie"
+         id="vie">
+
+
+    <div class="section-title reveal">
+
+        <small>
+            04 — La vie à Let's Mode
+        </small>
+
+        <h2>
+            Plus qu'une école.
+        </h2>
+
+        <p>
+
+            Une expérience qui se vit à travers
+            les ateliers, les sorties, les masterclass
+            et les événements.
+
+        </p>
+
+    </div>
+
+
+    <div class="vie-grid">
+
+
+        <div class="vie-image reveal">
+
+            <img
+            src="file:///C:/Users/Let's_MODE/Desktop/Dossier%20site%20web%20let's%20mode/ecole.png.png">
+
+        </div>
+
+
+        <div class="vie-text reveal">
+
+            <h3>
+
+                Une expérience
+                qui se vit.
+
+            </h3>
+
+
+            <p>
+
+                Apprendre, expérimenter, créer et
+                rencontrer les professionnels de
+                l'univers de la mode.
+
+            </p>
+
+
+            <div class="vie-list">
+
+                <div>
+                    <b>01</b>
+                    Ateliers pratiques
+                </div>
+
+                <div>
+                    <b>02</b>
+                    Sorties pédagogiques
+                </div>
+
+                <div>
+                    <b>03</b>
+                    Masterclass
+                </div>
+
+                <div>
+                    <b>04</b>
+                    Événements & défilés
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATISTIQUES
+===================================================== -->
+
+<div class="stats">
+
+    <div class="stat reveal">
+
+        <strong>
+            05
+        </strong>
+
+        <span>
+            Filières
+        </span>
+
+    </div>
+
+
+    <div class="stat reveal">
+
+        <strong>
+            01
+        </strong>
+
+        <span>
+            Univers de mode
+        </span>
+
+    </div>
+
+
+    <div class="stat reveal">
+
+        <strong>
+            100%
+        </strong>
+
+        <span>
+            Passion & créativité
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     ADMISSION
+===================================================== -->
+
+<section class="admission"
+         id="admission">
+
+
+    <div class="admission-grid">
+
+
+        <div class="admission-copy reveal">
+
+            <div class="small-title">
+
+                05 — Admission
+
+            </div>
+
+
+            <h2>
+
+                Votre aventure
+                commence ici.
+
+            </h2>
+
+
+            <p>
+
+                Avec ou sans le BAC.
+                Découvrez les formations et contactez
+                Let's Mode pour les inscriptions.
+
+            </p>
+
+
+            <button
+            class="btn btn-orange"
+            onclick="whatsapp()">
+
+                Demander des informations
+
+            </button>
+
+        </div>
+
+
+
+        <div class="info-box reveal">
+
+
+            <div class="info-row">
+
+                <span>
+                    Admission
+                </span>
+
+                <strong>
+                    Avec ou sans le BAC
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Diplôme
+                </span>
+
+                <strong>
+                    Reconnu par l'État
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Inscriptions
+                </span>
+
+                <strong>
+                    Ouvertes
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Début
+                </span>
+
+                <strong>
+                    À partir du 5 août
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Localisation
+                </span>
+
+                <strong>
+                    Calavi Cité Arconville
+                </strong>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span>
+                    Repère
+                </span>
+
+                <strong>
+                    Rue en face du Restaurant Privilège
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="contact"
+         id="contact">
+
+
+    <div class="reveal">
+
+
+        <div class="small-title">
+
+            06 — Contact
+
+        </div>
+
+
+        <h2>
+
+            Prêt(e)<br>
+            à créer ?
+
+        </h2>
+
+
+        <p>
+
+            Rejoignez l'univers Let's Mode.
+
+        </p>
+
+
+        <button
+        class="btn btn-orange"
+        onclick="whatsapp()">
+
+            Nous contacter sur WhatsApp
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div>
+
+        © 2026
+        <strong>
+            LET'S MODE
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        École de mode & création
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* ============================================
+   NAVIGATION
+============================================ */
+
+function allerA(id){
+
+    const section =
+        document.getElementById(id);
+
+    if(section){
+
+        section.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    }
+
+    document
+    .getElementById("nav")
+    .classList
+    .remove("open");
+
+}
+
+
+
+/* ============================================
+   MENU MOBILE
+============================================ */
+
+function ouvrirMenu(){
+
+    document
+    .getElementById("nav")
+    .classList
+    .toggle("open");
+
+}
+
+
+
+/* ============================================
+   HEADER AU SCROLL
+============================================ */
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        const header =
+            document.getElementById("header");
+
+        if(window.scrollY > 60){
+
+            header.classList.add("scrolled");
+
+        }else{
+
+            header.classList.remove("scrolled");
+
+        }
+
+    }
+);
+
+
+
+/* ============================================
+   OUVRIR LES FORMATIONS
+============================================ */
+
+function afficherDetails(id){
+
+    const cible =
+        document.getElementById(id);
+
+
+    document
+    .querySelectorAll(".details")
+    .forEach(function(element){
+
+        if(element !== cible){
+
+            element.classList.remove("open");
+
+        }
+
+    });
+
+
+    cible.classList.toggle("open");
+
+}
+
+
+
+/* ============================================
+   ANIMATION AU SCROLL
+============================================ */
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries){
+
+            entries.forEach(function(entry){
+
+                if(entry.isIntersecting){
+
+                    entry
+                    .target
+                    .classList
+                    .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(function(element){
+
+    observer.observe(element);
+
+});
+
+
+
+/* ============================================
+   WHATSAPP
+============================================ */
+
+function whatsapp(){
+
+    /*
+       NUMÉRO WHATSAPP DE LET'S MODE
+
+       Tu peux modifier le numéro ici.
+    */
+
+    const numero =
+        "2290161350206";
+
+
+    const message =
+        encodeURIComponent(
+            "Bonjour Let's Mode, je souhaite avoir des informations sur les formations et les inscriptions."
+        );
+
+
+    window.open(
+        "https://wa.me/"
+        + numero
+        + "?text="
+        + message,
+
+        "_blank"
+    );
+
+}
+
+
+
+/* ============================================
+   MENU ACTIF
+============================================ */
+
+const boutons =
+    document.querySelectorAll(
+        "nav button"
+    );
+
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        let actuelle = "";
+
+        sections.forEach(function(section){
+
+            const top =
+                section.offsetTop - 150;
+
+            if(
+                window.scrollY >= top
+            ){
+
+                actuelle =
+                    section.id;
+
+            }
+
+        });
+
+
+        boutons.forEach(function(button){
+
+            button.classList.remove(
+                "active"
+            );
+
+        });
+
+
+        const correspondances = {
+
+            accueil:0,
+
+            univers:1,
+
+            formations:2,
+
+            creations:3,
+
+            vie:4,
+
+            admission:5,
+
+            contact:6
+
+        };
+
+
+        if(
+            correspondances[actuelle]
+            !== undefined
+        ){
+
+            boutons[
+                correspondances[actuelle]
+            ].classList.add("active");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
